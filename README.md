@@ -1,54 +1,37 @@
-# React + TypeScript + Vite
+# vite project template
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+personal template for Vite projects, containing:
 
-Currently, two official plugins are available:
+- `tailwind` (v4)
+- `shadcn` setup
+- `eslint`/`prettier` setup
+- `react-router` setup
+- [devenv](devenv.sh) setup
+  - automatically installs dependencies (`nodejs` and `pnpm`)
+  - automatically installs project dependencies (`pnpm install`) when entering this directory with `direnv`
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## installation (linux)
 
-## Expanding the ESLint configuration
+if you are not using linux, follow [these steps](https://devenv.sh/getting-started/) instead.
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+### installing nix
 
-```js
-export default tseslint.config({
-  extends: [
-    // Remove ...tseslint.configs.recommended and replace with this
-    ...tseslint.configs.recommendedTypeChecked,
-    // Alternatively, use this for stricter rules
-    ...tseslint.configs.strictTypeChecked,
-    // Optionally, add this for stylistic rules
-    ...tseslint.configs.stylisticTypeChecked,
-  ],
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
+```sh
+sh <(curl -L https://nixos.org/nix/install) --daemon
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+### installing devenv
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+```sh
+nix-env --install --attr devenv -f https://github.com/NixOS/nixpkgs/tarball/nixpkgs-unstable
+```
 
-export default tseslint.config({
-  plugins: {
-    // Add the react-x and react-dom plugins
-    'react-x': reactX,
-    'react-dom': reactDom,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended typescript rules
-    ...reactX.configs['recommended-typescript'].rules,
-    ...reactDom.configs.recommended.rules,
-  },
-})
+### project setup
+
+after running these commands, you will be using a shell that has access to `nodejs` and `pnpm`, allow you to run `pnpm dev` and start working on your new project.
+
+```sh
+git clone https://github.com/voidcoefficient/vite-template project-name
+cd project-name
+devenv shell
 ```
