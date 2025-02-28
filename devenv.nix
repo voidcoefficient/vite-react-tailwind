@@ -19,9 +19,10 @@
   # processes.cargo-watch.exec = "cargo-watch";
 
   # https://devenv.sh/scripts/
-  scripts.dev.exec = ''
-    pnpm dev
-  '';
+  scripts = {
+    dev.exec = "";
+    add.exec = "pnpm dlx shadcn@latest add $1";
+  };
 
   # enterShell = ''
   #   install
