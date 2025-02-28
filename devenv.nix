@@ -2,7 +2,7 @@
 
 {
   # https://devenv.sh/packages/
-  packages = with pkgs; [ git ];
+  packages = with pkgs; [ ];
 
   # https://devenv.sh/languages/
   # languages.rust.enable = true;
@@ -16,30 +16,18 @@
   };
 
   # https://devenv.sh/processes/
-  # processes.cargo-watch.exec = "cargo-watch";
+  processes.vite.exec = "pnpm dev";
 
   # https://devenv.sh/scripts/
   scripts = {
-    dev.exec = "";
+    dev.exec = "devenv up";
     add.exec = "pnpm dlx shadcn@latest add $1";
   };
 
-  # enterShell = ''
-  #   install
-  #   git --version
-  # '';
-
-  # https://devenv.sh/tasks/
-  # tasks = {
-  #   "myproj:setup".exec = "mytool build";
-  #   "devenv:enterShell".after = [ "myproj:setup" ];
-  # };
-
   # https://devenv.sh/tests/
-  # enterTest = ''
-  #   echo "Running tests"
-  #   git --version | grep --color=auto "${pkgs.git.version}"
-  # '';
+  enterTest = ''
+    pnpm test
+  '';
 
   # https://devenv.sh/pre-commit-hooks/
   # pre-commit.hooks.shellcheck.enable = true;

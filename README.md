@@ -12,7 +12,7 @@ personal template for Vite projects, containing:
 
 ## installation (linux)
 
-if you are not using linux, follow [these steps](https://devenv.sh/getting-started/) instead.
+if you are not using linux, follow [these steps](https://devenv.sh/getting-started/) instead
 
 ### installing nix
 
@@ -34,4 +34,20 @@ after running these commands, you will be using a shell that has access to `node
 git clone https://github.com/voidcoefficient/vite-template project-name
 cd project-name
 devenv shell
+```
+
+## testing
+
+tests and watches for file changes
+
+```sh
+devenv test
+```
+
+## developing
+
+this command will start the vite process and watch for file changes
+
+```sh
+dev
 ```
